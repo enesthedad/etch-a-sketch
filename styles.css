@@ -1,0 +1,27 @@
+.container{
+    width: 640px;
+    height: 640px;
+
+}
+#sketch{
+    box-sizing: border-box;
+    border: 2px solid black;
+    
+    display: flex;
+    
+    
+    flex-wrap: wrap;
+    
+}
+.box{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border: none;
+}
+.black{
+    background-color: black;
+}
