@@ -1,27 +1,93 @@
-.container{
-    width: 640px;
-    height: 640px;
+:root{
+    --first-color:#51D7D0;
+    --second-color:#FBEA5E;
+    --third-color:#85518A;
+    --fourth-color:#FA7B52;
+    background-color: var(--first-color);
+    font-family: 'Press Start 2P', cursive;
+    color:var(--third-color);
+    text-align: center;
+   
+}
 
+h1{
+    font-size: 14px;
+}
+.container{
+    margin: 5px auto;
+    width: 196px;
+    height: 190px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 #sketch{
+    margin-left:auto ;
+   
+    margin-top: 15px;
     box-sizing: border-box;
-    border: 2px solid black;
-    
+    border: 2px solid var(--third-color);
     display: flex;
-    
-    
     flex-wrap: wrap;
-    
+    justify-content: center;
 }
 .box{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    width: 10px;
-    height: 10px;
+    width: 3px;
+    height: 3px;
     background-color: white;
     border: none;
 }
 .black{
     background-color: black;
 }
+.buttons{
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:10px;
+    
+}
+.btn{
+    font-family: 'Press Start 2P', cursive;
+    
+    font-size: 10px;
+    background-color: var(--fourth-color);
+    color:ghostwhite;
+    border:none;
+    border-radius: 5px;
+}
+.active{
+    background-color: var(--second-color);
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content{
+    display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {background-color: #3e8e41;}
