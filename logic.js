@@ -6,38 +6,78 @@ const blackBtn=document.getElementById('black');
 const rgbBtn=document.getElementById('rgb');
 const box = document.getElementById('sketch');
 let currentColor = 'black';
-const grid16=document.getElementById('16');
-const grid32=document.getElementById('32');
-const grid48=document.getElementById('48');
-const grid64=document.getElementById('64');
-
+const grid16=document.getElementById('grid16');
+const grid32=document.getElementById('grid32');
+const grid48=document.getElementById('grid48');
+const grid64=document.getElementById('grid64');
+const gridBtns = document.querySelectorAll('.grid-btn')
 
 let grid = 64;
 
-
-
-    for(let i=0;i<64*64;i++){
+const createGrid = function(gridNum){
+    for(let i=0;i<gridNum*gridNum;i++){
         const el = document.createElement('div');
         el.id='b'+i;
         el.className='box';
     
         box.appendChild(el);
-    
+        
     }
-
-
-
-const randomHex=function(){
-    return Math.trunc(Math.random()*255)+1;
 }
-
-resetBtn.addEventListener('click',function(){
+const resetGrid=function(){
     colored.forEach(el=>el.style.backgroundColor='white');
     currentColor='black';
     btns.forEach((but)=>but.classList.remove('active'));
     blackBtn.classList.add('active');
+}
+createGrid(grid);
+grid64.classList.add('active');
+const randomHex=function(){
+    return Math.trunc(Math.random()*255)+1;
+}
+grid16.addEventListener('click',function(){
+    colored.forEach(function(div){
+     div.style.width='40px';
+     div.style.height='40px';
+     
+    })
+    gridBtns.forEach(btn=>btn.classList.remove('active'));
+    grid16.classList.add('active');
+    resetGrid();
+ })
+grid32.addEventListener('click',function(){
+   colored.forEach(function(div){
+    div.style.width='20px';
+    div.style.height='20px';
+    
+   })
+   gridBtns.forEach(btn=>btn.classList.remove('active'));
+   grid32.classList.add('active');
+   resetGrid();
 })
-const colored = document.querySelectorAll('.box');
+grid48.addEventListener('click',function(){
+    colored.forEach(function(div){
+     div.style.width='13.3333px';
+     div.style.height='13.3333px';
+    })
+    gridBtns.forEach(btn=>btn.classList.remove('active'));
+    grid48.classList.add('active');
+    resetGrid();
+    
+ })
+ grid64.addEventListener('click',function(){
+    colored.forEach(function(div){
+     div.style.width='10px';
+     div.style.height='10px';
+     
+    })
+    gridBtns.forEach(btn=>btn.classList.remove('active'));
+    grid64.classList.add('active');
+    
+    resetGrid();
+ })
+resetBtn.addEventListener('click',resetGrid)
+
 blackBtn.addEventListener('click',function(){ 
     currentColor='black';
     btns.forEach((but)=>but.classList.remove('active'));
@@ -53,14 +93,24 @@ rgbBtn.addEventListener('click',function() {
     btns.forEach((but)=>but.classList.remove('active'));
     rgbBtn.classList.add('active');
 });
-
-
+const createCustomGrid = function(userInput){
+    let gridPx = 192/userInput;
+    colored.forEach(function(div){
+        div.style.width=`${gridPx}px`;
+        div.style.height=`${gridPx}px`;
+        
+       })
+       resetGrid();
+}
+const colored = document.querySelectorAll('.box');
 const paintEle = function(boxi){
     
     boxi.addEventListener('mouseover',function(eve){
         if(currentColor=='black'){
-        boxi.style.backgroundColor=`black`;
-        
+            
+                boxi.style.backgroundColor=`black`;
+                console.log(boxi.click);
+            
         }else if(currentColor == 'white'){
         boxi.style.backgroundColor=`white`;
        
@@ -73,8 +123,8 @@ const paintEle = function(boxi){
     })
 }
 
-
-
+// const user = prompt('Enter a number');
+// createCustomGrid(user);
 colored.forEach(ell =>paintEle(ell));
 
 
