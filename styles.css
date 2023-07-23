@@ -14,19 +14,17 @@ h1{
     font-size: 36px;
 }
 .container{
-    margin: 5px auto;
-    width: 645px;
-    height: 645px;
+    margin: 0 auto;
+    width: 100%;
     margin-top: 10px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
 }
 #sketch{
-    margin-left:auto ;
     height: 644px;
     width: 644px;
-
+    margin:5px auto;
     margin-top: 15px;
     box-sizing: border-box;
     border: 2px solid var(--third-color);
@@ -100,14 +98,16 @@ h1{
     background-color: var(--second-color);
 }   
 .footer{
-    margin:0;
+   
+    position: fixed;
+    bottom: 0;
+    left: 0;
     padding: 10px 0;
     height: 20px;
     width: 100%;
     background-color: #FA7B52;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    
+    
     align-items: center;
     
 }
