@@ -10,10 +10,18 @@ const grid16=document.getElementById('grid16');
 const grid32=document.getElementById('grid32');
 const grid48=document.getElementById('grid48');
 const grid64=document.getElementById('grid64');
-const gridBtns = document.querySelectorAll('.grid-btn')
-
+const gridBtns = document.querySelectorAll('.grid-btn');
+const colorPicker=document.getElementById('color-picker');
+let toggle = false;
 let grid = 64;
-
+const toggleClick=function(){
+    if(toggle==false){
+        toggle=true;
+    }
+    else{
+        toggle=false;
+    }
+}
 const createGrid = function(gridNum){
     for(let i=0;i<gridNum*gridNum;i++){
         const el = document.createElement('div');
@@ -93,6 +101,13 @@ rgbBtn.addEventListener('click',function() {
     btns.forEach((but)=>but.classList.remove('active'));
     rgbBtn.classList.add('active');
 });
+
+colorPicker.addEventListener('input',()=>{
+    currentColor='selected';
+    btns.forEach((but)=>but.classList.remove('active'));
+    selectedValue = colorPicker.value;
+    colorPicker.classList.add('active');
+})
 const createCustomGrid = function(userInput){
     let gridPx = 192/userInput;
     colored.forEach(function(div){
@@ -105,26 +120,44 @@ const createCustomGrid = function(userInput){
 const colored = document.querySelectorAll('.box');
 const paintEle = function(boxi){
     
+
     boxi.addEventListener('mouseover',function(eve){
-        if(currentColor=='black'){
+        if(currentColor=='black'&& toggle){
             
                 boxi.style.backgroundColor=`black`;
-                console.log(boxi.click);
+                
             
-        }else if(currentColor == 'white'){
+        }else if(currentColor == 'white' && toggle){
         boxi.style.backgroundColor=`white`;
        
-        }else if(currentColor=='rgb'){
+        }else if(currentColor=='rgb' && toggle){
         boxi.style.backgroundColor=`rgb(${randomHex()},${randomHex()},${randomHex()})`;
         
+        }else if(currentColor=='selected'&& toggle){
+            boxi.style.backgroundColor=`${selectedValue}`;
+          
         }
         
         
     })
+    
 }
 
 // const user = prompt('Enter a number');
 // createCustomGrid(user);
-colored.forEach(ell =>paintEle(ell));
+
+colored.forEach((ell) =>{
+    
+    paintEle(ell);
+
+});
 
 
+box.addEventListener('click',()=>{
+    if(toggle==false){
+        toggle=true;
+    }else{
+        toggle=false;
+    }
+
+});

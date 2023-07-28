@@ -88,6 +88,20 @@ h1{
     border: none;
     border-radius: 10px;
 }
+#color-picker{
+    padding: 2px   ;
+    width: 60px;
+    height: 40px;
+    font-size: 24px;
+    color:white;
+    background-color: var(--fourth-color);
+    border: none;
+    border-radius: 5px;
+}
+#color-picker:hover{
+    
+    background-color: var(--third-color);
+}
 .grid-btn:hover{
     
     background-color: var(--third-color);
